@@ -44,11 +44,6 @@ class PickerModal extends BaseComponent {
     this.scrollToSelected(nextProps.scrollPosition);
   }
 
-  componentDidMount() {
-    const {onModalRendered} = this.props;
-    onModalRendered();
-  }
-
   onScrollViewLayout = ({
                               nativeEvent: {
                                   layout: {height},
