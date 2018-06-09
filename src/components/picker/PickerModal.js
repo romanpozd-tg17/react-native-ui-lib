@@ -22,6 +22,7 @@ class PickerModal extends BaseComponent {
       placeholderTextColor: PropTypes.string,
       selectionColor: PropTypes.string,
     }),
+    searchPlaceholder: PropTypes.string,
     onSearchChange: PropTypes.func,
   };
 

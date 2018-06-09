@@ -254,7 +254,6 @@ class Picker extends TextInput {
     return (
       <PickerModal
         visible={showExpandableModal}
-        scrollPosition={selectedItemPosition}
         enableModalBlur={enableModalBlur}
         topBarProps={{
           ...topBarProps,
