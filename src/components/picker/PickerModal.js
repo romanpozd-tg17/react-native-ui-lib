@@ -17,7 +17,17 @@ class PickerModal extends BaseComponent {
     topBarProps: PropTypes.shape(Modal.TopBar.propTypes),
     scrollPosition: PropTypes.number,
     showSearch: PropTypes.bool,
+    searchStyle: PropTypes.shape({
+      color: PropTypes.string,
+      placeholderTextColor: PropTypes.string,
+      selectionColor: PropTypes.string,
+    }),
     onSearchChange: PropTypes.func,
+  };
+
+
+  static defaultProps = {
+    searchPlaceholder: 'Search...',
   };
 
   state = {
@@ -34,10 +44,10 @@ class PickerModal extends BaseComponent {
   }
 
   onScrollViewLayout = ({
-    nativeEvent: {
-      layout: {height},
-    },
-  }) => {
+                              nativeEvent: {
+                                  layout: {height},
+                              },
+                          }) => {
     this.setState({scrollHeight: height}, () => {
       this.scrollToSelected();
     });
@@ -67,15 +77,17 @@ class PickerModal extends BaseComponent {
   }
 
   renderSearchInput() {
-    const {showSearch, onSearchChange} = this.props;
+    const {showSearch, onSearchChange, searchStyle, searchPlaceholder} = this.props;
     if (showSearch) {
       return (
         <View style={this.styles.searchInputContainer}>
           <Image style={this.styles.searchIcon} source={Assets.icons.search}/>
           <TextInput
             ref={r => this.search = r}
-            style={this.styles.searchInput}
-            placeholder="Search..."
+            style={[this.styles.searchInput, {color: searchStyle.color}]}
+            placeholderTextColor={searchStyle.placeholderTextColor}
+            selectionColor={searchStyle.selectionColor}
+            placeholder={searchPlaceholder}
             onChangeText={_.throttle(onSearchChange, 300)}
             autoCorrect={false}
             underlineColorAndroid="transparent"
