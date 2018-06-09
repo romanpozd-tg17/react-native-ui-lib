@@ -86,7 +86,10 @@ class Picker extends TextInput {
       placeholderTextColor: PropTypes.string,
       selectionColor: PropTypes.string,
     }),
-        /**
+
+    searchPlaceholder: PropTypes.string,
+
+    /**
          * Allow to use the native picker solution (different for iOS and Android)
          */
     useNativePicker: PropTypes.bool,
